@@ -52,7 +52,7 @@ get_id.addEventListener("click", () => {
                 return response.json();
             })
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 channelId = data.items[0].id.channelId
                 PLAYLIST_ID = 'UU' + channelId.slice(2);
             })
@@ -76,7 +76,7 @@ let test = () => {
             return response.json();
         })
         .then(data => {
-            console.log(data);
+            // console.log(data);
             channelId = data.items[0].id.channelId;
             PLAYLIST_ID = 'UU' + channelId.slice(2);
         });
@@ -96,18 +96,18 @@ let ids = () => {
                 // const today = new Date();
                 // today.setMonth(today.getMonth() - 1)
                 // var dateString = today.getFullYear() + "-" + "0" + (today.getMonth() + 1) + "-" + today.getDate() + "T00:00:00Z";
-                console.log(data)
+                // console.log(data)
                 // console.log(dateString)
                 const today = new Date();
                 today.setMonth(today.getMonth() - 1);
                 const dateString = today.toISOString(); // This gives you the formatted date string
-                console.log(dateString)
+                // console.log(dateString)
 
                 // "2023-07-01T11:18:56Z"
                 for (var i = 0; i < data.items.length; i++) {
                     if (data.items[i].snippet.publishedAt > dateString /*"2023-07-08T00:00:00Z"/*today.getFullYear() + "-" + 0 + today.getMonth() + "-" + today.getDay()*/) {
                         arr.push(data.items[i].snippet.resourceId.videoId);
-                        console.log(data.items[i].snippet.title + data.items[i].snippet.resourceId.videoId)
+                        // console.log(data.items[i].snippet.title + data.items[i].snippet.resourceId.videoId)
 
                     }
                 }
@@ -117,7 +117,7 @@ let ids = () => {
             })
             .then(videoIds => {
                 // Now we can call the video function to filter video IDs based on duration.
-                console.log(videoIds)
+                // console.log(videoIds)
                 return video(videoIds);
             })
         )
@@ -137,7 +137,7 @@ const fetchVideoData = (video_id) => {
             const videoDuration = data.items[0].contentDetails.duration;
             const durationInMilliseconds = parseYouTubeDurationToMilliseconds(videoDuration);
             if (durationInMilliseconds > 90000 && durationInMilliseconds < 3600000) {
-                console.log(data.items[0].id)
+                // console.log(data.items[0].id)
                 return data.items[0].id;
             }
             return null;
